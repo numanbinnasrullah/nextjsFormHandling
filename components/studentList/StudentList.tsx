@@ -14,11 +14,11 @@ const StudentList = (props) => {
                 </tr>  
       {props.studentData.map( (student) => {
         return (
-         <tr>
-            <th>{student.name}</th>
-            <th>{student.class}</th>
-            <th>{student.email}</th>
-            <th> {student.rollNo}</th>
+         <tr key={student.rollNo} style={{textAlign:'cenetr'}}>
+            <td>{student.name}</td>
+            <td>{student.class}</td>
+            <td>{student.email}</td>
+            <td> {student.rollNo}</td>
          </tr>
         )
       })}

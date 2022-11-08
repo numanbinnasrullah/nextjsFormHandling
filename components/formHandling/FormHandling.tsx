@@ -1,6 +1,6 @@
 import { useState } from "react";
 import StudentList from "../studentList/StudentList";
-import { Input } from '@chakra-ui/react'
+import { Input, Button } from '@chakra-ui/react'
 
 
 const FormHandling = () => {
@@ -44,22 +44,27 @@ const FormHandling = () => {
     <div>
             
       <label htmlFor="">Name: </label>
-      <input type="text" placeholder="Enter Student Name" value={studentName} onChange={ (e) => setStudentName(e.target.value)} /> 
+      <Input type="text" placeholder="Enter Student Name" value={studentName} onChange={ (e) => setStudentName(e.target.value)}/>
+      {/* <input type="text" placeholder="Enter Student Name" value={studentName} onChange={ (e) => setStudentName(e.target.value)} />  */}
       <br />
       <br />
       <label htmlFor="">Class: </label>
-      <input type="text" placeholder="Enter Student Class" value={studentClass} onChange={ (e) => setStudentClass(e.target.value)}/> 
+      <Input type="text" placeholder="Enter Student Class" value={studentClass} onChange={ (e) => setStudentClass(e.target.value)}/>
+      {/* <input type="text" placeholder="Enter Student Class" value={studentClass} onChange={ (e) => setStudentClass(e.target.value)}/>  */}
       <br />
       <br />
       <label htmlFor="">Email: </label>
-      <input type="text" placeholder="Enter Student Email" value={studentEmail} onChange={ (e) => setStudentEmail(e.target.value)}/> 
+      <Input type="text" placeholder="Enter Student Email" value={studentEmail} onChange={ (e) => setStudentEmail(e.target.value)}/>
+      {/* <input type="text" placeholder="Enter Student Email" value={studentEmail} onChange={ (e) => setStudentEmail(e.target.value)}/>  */}
       <br />
       <br />
       <label htmlFor="">Roll No: </label>
-      <input type="text" placeholder="Enter Student Roll No" value={studentRollNo} onChange={ (e) => setStudentRollNo(e.target.value)}/>
+      <Input type="text" placeholder="Enter Student Roll No" value={studentRollNo} onChange={ (e) => setStudentRollNo(e.target.value)}/>
+      {/* <input type="text" placeholder="Enter Student Roll No" value={studentRollNo} onChange={ (e) => setStudentRollNo(e.target.value)}/> */}
       <br />
       <br />
-      <button onClick={submitHandler}>Submit Data</button>
+      <Button colorScheme='teal' size='lg' onClick={submitHandler}> Submit Data</Button>
+      {/* <button onClick={submitHandler}>Submit Data</button> */}
       <br />
       <br />
     
