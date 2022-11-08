@@ -1,6 +1,8 @@
 import { useState } from "react";
 import StudentList from "../studentList/StudentList";
 import { Input, Button } from '@chakra-ui/react'
+import Link from 'next/link';
+import { useToast } from '@chakra-ui/react';
 
 
 const FormHandling = () => {
@@ -10,6 +12,8 @@ const FormHandling = () => {
     const [studentRollNo, setStudentRollNo] = useState("")
     const [students, setStudents] = useState([])
 
+    const toast = useToast()
+
     type newStudentType = {
         name: string,
         class: string,
@@ -18,7 +22,13 @@ const FormHandling = () => {
     }
     const submitHandler = () => {
         if( !(studentName && studentClass && studentEmail && studentRollNo) ) {
-            alert("Please Fill All The Required Fields")
+          toast({
+            position: 'top',
+            title: `Please Fill All The Required Fields`,
+            status: 'error',
+            duration: 9000,
+            isClosable: true,
+          })
         } else {
             const newStudentData: newStudentType = {
                 name: studentName,
@@ -28,15 +38,25 @@ const FormHandling = () => {
             }
     
             setStudents([...students, newStudentData])
-    
+            
             setStudentName("")
             setStudentClass("")
             setStudentEmail("")
             setStudentRollNo("")
     
-            console.log(students);
+            console.log(students.length);
+
+            toast({
+              position: 'top',
+              title: `Student Added Successfully , Total Students are : ${students.length+1} `,
+              status: 'success',
+              duration: 9000,
+              isClosable: true,
+            })
+    
         }
 
+        
     }
 
     
@@ -64,11 +84,14 @@ const FormHandling = () => {
       <br />
       <br />
       <Button colorScheme='teal' size='lg' onClick={submitHandler}> Submit Data</Button>
+
+      <Link href="/"> Go to Counter App</Link>
       {/* <button onClick={submitHandler}>Submit Data</button> */}
       <br />
       <br />
     
-      <h2>Student List Shows Here</h2>
+      <h2>Student List Shows Here</h2> 
+      Total No of Students : <b>{students.length}</b>
       <StudentList studentData={students}/>
 
     </div>
@@ -76,3 +99,7 @@ const FormHandling = () => {
 }
 
 export default FormHandling;
+
+
+
+

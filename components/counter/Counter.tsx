@@ -3,6 +3,8 @@ import MyButton from "../button/button";
 import { useToast } from '@chakra-ui/react';
 import { Text } from '@chakra-ui/react'
 import FormHandling from "../formHandling/FormHandling";
+import { Input, Button } from '@chakra-ui/react'
+import Link from 'next/link';
 
 const Counter = () => {
     const [counterValue, setCounterValue] = useState(0);
@@ -38,8 +40,7 @@ const Counter = () => {
             <br />
             <br />
             
-            <FormHandling />
-
+            <Link href="form/formHandling"> Go to Form Data</Link>
         </>
     )
 }

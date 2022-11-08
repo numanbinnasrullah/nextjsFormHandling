@@ -14,7 +14,7 @@ const StudentList = (props) => {
                 </tr>  
       {props.studentData.map( (student) => {
         return (
-         <tr key={student.rollNo} style={{textAlign:'cenetr'}}>
+         <tr key={student.rollNo} >
             <td>{student.name}</td>
             <td>{student.class}</td>
             <td>{student.email}</td>
