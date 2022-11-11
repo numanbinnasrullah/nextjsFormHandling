@@ -1,4 +1,5 @@
 import React from 'react';
+import { Button } from '@chakra-ui/react'
 
 const StudentList = (props) => {
     // console.log("Props",props.studentData);
@@ -20,7 +21,8 @@ const StudentList = (props) => {
                 <td>{student.class}</td>
                 <td>{student.email}</td>
                 <td> {student.rollNo}</td>
-                <button onClick={()=>{props.upDateStudnData(index)}}>Edit</button>
+                <Button onClick={()=>{props.upDateStudnData(index)}}>Edit</Button>
+                <Button onClick={()=>{props.studentDelete(student.rollNo)}}>Delete</Button>
             </tr>
             )
           })}

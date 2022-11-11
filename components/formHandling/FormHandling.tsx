@@ -29,7 +29,7 @@ const FormHandling = () => {
             position: 'top',
             title: `Please Fill All The Required Fields`,
             status: 'error',
-            duration: 9000,
+            duration: 4000,
             isClosable: true,
           })
         } else {
@@ -53,7 +53,7 @@ const FormHandling = () => {
               position: 'top',
               title: `Student Added Successfully , Total Students are : ${students.length+1} `,
               status: 'success',
-              duration: 9000,
+              duration: 4000,
               isClosable: true,
             })
     
@@ -87,6 +87,20 @@ const FormHandling = () => {
 
       setShowUpdate(false)
       setUpdateIndex('')
+
+      toast({
+        position: 'top',
+        title: `Student Data Updated`,
+        status: 'success',
+        duration: 4000,
+        isClosable: true,
+      })
+    }
+
+    const studentDelete = (studentRollNo) => {
+      const updateStudentData = [...students]
+      const result = updateStudentData.filter( student => student.rollNo !== studentRollNo  )
+      setStudents(result)
     }
 
   return (
@@ -122,7 +136,7 @@ const FormHandling = () => {
     
       <h2>Student List Shows Here</h2> 
       Total No of Students : <b>{students.length}</b>
-      <StudentList studentData={students} upDateStudnData={editHandler}/>
+      <StudentList studentData={students} upDateStudnData={editHandler} studentDelete={studentDelete}/>
 
     </div>
   )

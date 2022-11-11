@@ -16,7 +16,7 @@ const Counter = () => {
             position: 'top',
             title: `State Updated as Increment & Curent Value is ${counterValue + 1 } `,
             status: 'success',
-            duration: 9000,
+            duration: 4000,
             isClosable: true,
           })
         
@@ -27,7 +27,7 @@ const Counter = () => {
             position: 'top',
             title: `State Updated as Decrement & Curent Value is ${counterValue - 1}`,
             status: 'error',
-            duration: 9000,
+            duration: 4000,
             isClosable: true,
           })
     }
