@@ -11,6 +11,8 @@ const FormHandling = () => {
     const [studentEmail, setStudentEmail] = useState("")
     const [studentRollNo, setStudentRollNo] = useState("")
     const [students, setStudents] = useState([])
+    const [showUpdate, setShowUpdate] = useState(false)
+    const [updateIndex, setUpdateIndex] = useState('')
 
     const toast = useToast()
 
@@ -18,7 +20,8 @@ const FormHandling = () => {
         name: string,
         class: string,
         email: string,
-        rollNo: string
+        rollNo: string,
+        showUpdateBtn? : boolean
     }
     const submitHandler = () => {
         if( !(studentName && studentClass && studentEmail && studentRollNo) ) {
@@ -34,17 +37,17 @@ const FormHandling = () => {
                 name: studentName,
                 class: studentClass,
                 email: studentEmail,
-                rollNo: studentRollNo
+                rollNo: studentRollNo,
+                showUpdateBtn : showUpdate
             }
-    
-            setStudents([...students, newStudentData])
             
+            setStudents([...students, newStudentData])
             setStudentName("")
             setStudentClass("")
             setStudentEmail("")
             setStudentRollNo("")
-    
-            console.log(students.length);
+
+            
 
             toast({
               position: 'top',
@@ -55,11 +58,37 @@ const FormHandling = () => {
             })
     
         }
-
         
     }
 
-    
+    const editHandler = (Index) => {
+      const updateStudentData = [...students]
+      setStudentName(updateStudentData[Index].name)
+      setStudentClass(updateStudentData[Index].class)
+      setStudentEmail(updateStudentData[Index].email)
+      setStudentRollNo(updateStudentData[Index].rollNo)
+      setShowUpdate(true)
+      setUpdateIndex(Index)    
+    }
+
+    const updateHandler = ()=> {
+      const updateStudentData = [...students]
+      updateStudentData[updateIndex].name = studentName
+      updateStudentData[updateIndex].class = studentClass
+      updateStudentData[updateIndex].email = studentEmail
+      updateStudentData[updateIndex].rollNo = studentRollNo
+
+      setStudents([...updateStudentData])
+
+      setStudentName("")
+      setStudentClass("")
+      setStudentEmail("")
+      setStudentRollNo("")
+
+      setShowUpdate(false)
+      setUpdateIndex('')
+    }
+
   return (
     <div>
             
@@ -83,7 +112,8 @@ const FormHandling = () => {
       {/* <input type="text" placeholder="Enter Student Roll No" value={studentRollNo} onChange={ (e) => setStudentRollNo(e.target.value)}/> */}
       <br />
       <br />
-      <Button colorScheme='teal' size='lg' onClick={submitHandler}> Submit Data</Button>
+      {showUpdate ? <Button colorScheme='teal' size='lg' onClick={updateHandler}> Update Data</Button> 
+      : <Button colorScheme='teal' size='lg' onClick={submitHandler}> Submit Data</Button> }
 
       <Link href="/"> Go to Counter App</Link>
       {/* <button onClick={submitHandler}>Submit Data</button> */}
@@ -92,7 +122,7 @@ const FormHandling = () => {
     
       <h2>Student List Shows Here</h2> 
       Total No of Students : <b>{students.length}</b>
-      <StudentList studentData={students}/>
+      <StudentList studentData={students} upDateStudnData={editHandler}/>
 
     </div>
   )
