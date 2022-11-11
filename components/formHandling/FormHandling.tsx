@@ -101,6 +101,14 @@ const FormHandling = () => {
       const updateStudentData = [...students]
       const result = updateStudentData.filter( student => student.rollNo !== studentRollNo  )
       setStudents(result)
+
+      toast({
+        position: 'top',
+        title: `Student Deleted Successfully`,
+        status: 'error',
+        duration: 4000,
+        isClosable: true,
+      })
     }
 
   return (
